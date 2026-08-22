@@ -53,26 +53,95 @@ print("Empty true text articles:", len(Empty_true))
 print("\n empty true text in articles subject wise:",Empty_true["subject"].value_counts())
 
 
+#now let's remove the duplicates in the both datasets and
+#  it's columns and also remove the empty rows in the both
 
 
-print("\n cleaning the dataset for further processing before training and the development of \n any classification , detection or predection model for  verifier lens model:")
+print("\n cleaning the dataset for further processing before training and the development of "
+"\n any classification , detection or predection model for  verifier lens model:")
 
-fake_clean_test = fake.drop_duplicates()
-true_clean_test = true.drop_duplicates()
+fake_clean = fake.drop_duplicates().copy()
+true_clean = true.drop_duplicates().copy()
 
 print("fake before:",len(fake))
-print("fake after count of exact duplicates:",len(fake_clean_test))
-print("fake removed:",len(fake)-len(fake_clean_test))
+print("fake after count of exact duplicates:",len(fake_clean))
+print("fake removed:",len(fake)-len(fake_clean))
 
-fake_non_empty =fake[fake["text"].str.strip()!=""]
+fake_non_empty =fake[fake["text"].str.strip()!=""].copy()
 print("fake Non empty rows:",len(fake_non_empty))
 print("fake  unique Non empty rows:",fake_non_empty["text"].nunique())
 
 
 print("true before:",len(true))
-print("true after count of exact duplicates:",len(true_clean_test))
-print("true removed:",len(true)-len(true_clean_test))
+print("true after count of exact duplicates:",len(true_clean))
+print("true removed:",len(true)-len(true_clean))
 
-true_non_empty =true[true["text"].str.strip()!=""]
+true_non_empty =true[true["text"].str.strip()!=""].copy()
 print("true Non empty rows:",len(true_non_empty))
 print("true  unique Non empty rows:",true_non_empty["text"].nunique())
+
+short_fake = fake_clean[fake_clean["text"].str.len() <=50]
+short_true = true_clean[true_clean["text"].str.len() <=50]
+
+print("\n shortfake news articles :",len(short_fake))
+print("\n shorttrue news articles :",len(short_true))
+
+print("\n short fake articles title length:",short_fake["title"]
+      .str.len().describe())
+print("\n short true articles title length:",short_true["title"]
+      .str.len().describe())
+
+
+short_fake = short_fake.copy()
+short_fake["title_len"] = short_fake["title"].str.len()
+short_true = short_true.copy()
+short_true["title_len"] = short_true["title"].str.len()
+
+print(short_fake.sort_values(
+    by="text",
+    key=lambda x: x.str.len()
+    )
+    .head(20)
+)
+
+print("short fake news articles :",len(short_fake))
+print(short_fake[["title","text"]])
+
+
+print(short_true.sort_values(
+    by="text"
+    ,key=lambda x: x.str.len()
+    )
+    .head(20)
+)
+
+print("short true news articles :",len(short_true))
+print(short_true[["title","text"]])
+
+# finally finding the whole  duplicates sum in the both datasets being used for the devoplement of project verifier lense model
+
+print("\n  Duplicate articles text in total:")
+print("fake:",fake_clean["text"].duplicated().sum())
+print("true:",true_clean["text"].duplicated().sum())
+
+#crosschecking the overlapping articles in the data
+
+fake_text = set(fake_clean["text"])
+true_text = set(true_clean["text"])
+
+common_text =fake_text.intersection(true_text)
+print("\n similar appreance in the both datasets:",len(common_text))
+
+for text in common_text:
+    print("\n --- COMMON TEXT ---")
+    print(text)
+
+    print("\n--- FAKE RECORD ---")
+    print(fake_clean[fake_clean["text"] == text][
+        ["title", "text", "subject", "date"]
+    ])
+
+    print("\n--- TRUE RECORD ----------")
+    print(true_clean[true_clean["text"] == text][
+        ["title", "text", "subject", "date"]
+    ])

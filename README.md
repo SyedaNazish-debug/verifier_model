@@ -1,3 +1,29 @@
+**PROJECT NAME: VERIFIER MODEL**
+____________________________________________________________________________
+
+**SECTIONS**
+____________________________________________________________________________
+
+**ABSTRACT** 
+
+**Chapter 1 – Introduction** 
+
+**Chapter 2 – Literature Survey**
+
+**Chapter 3 – Scope of the Project**
+
+**Chapter 4 – Methodology / Approach**
+
+**Chapter 5 – Details of Designs, Working and Processes**
+
+**Chapter 6 – Results and Applications**
+
+**Conclusion**
+
+**Reference** 
+
+__________________________________________________________________________________
+
 **PROJECT ABSTRACT**
 
 **Problem:**

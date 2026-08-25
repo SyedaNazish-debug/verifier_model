@@ -6,7 +6,7 @@ st.set_page_config(
     page_icon="💯/❌",
     layout="centered")
 
-st.title("FAKE NEWS DETECTION SYSTEM")
+st.title("FAKE NEWS DETECTION SYSTEM:")
 st.write("Enter a news article below & the system will analyze it as Fake or Real")
 
 st.metric(label="Model accuracy",

@@ -48,10 +48,10 @@ test_data["label"] = test_data["label"].map(label_mapping)
 test_data = test_data.dropna(subset=["title", "label"])
 
 
-print("\n========== FAKE NEWS EXAMPLES ==========")
+print("\n FAKE NEWS EXAMPLES")
 print(test_data[test_data["label"] == "fake"][["title"]].head(3).to_string())
 
-print("\n========== REAL NEWS EXAMPLES ==========")
+print("\n REAL NEWS EXAMPLES")
 print(test_data[test_data["label"] == "real"][["title"]].head(3).to_string()) 
 
 # =========================
@@ -208,10 +208,6 @@ print(
 
 print("\nDuplicate records:")
 print(train_data.duplicated().sum())
-
-
-
-
 
 ###########################
 

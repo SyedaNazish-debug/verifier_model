@@ -145,3 +145,45 @@ for text in common_text:
     print(true_clean[true_clean["text"] == text][
         ["title", "text", "subject", "date"]
     ])
+
+##unique occrance 
+
+print("fake unique text:",fake_clean["text"].nunique())
+print("true unique text:",true_clean["text"].nunique())
+
+fake_duplicated_text = fake_clean[fake_clean["text"].duplicated(keep=False)].copy()
+true_duplicated_text = true_clean[true_clean["text"].duplicated(keep=False)].copy()
+
+print("fake duplicated text:",len(fake_duplicated_text))
+print("true duplicated text:",len(true_duplicated_text))
+
+print(fake_duplicated_text[["title","text","subject","date"]
+        ]
+      .sort_values("text")
+      .head(20)
+    )
+print(true_duplicated_text[["title","text","subject","date"]
+        ]
+      .sort_values("text")
+      .head(20)
+    )
+fake_text = set(fake_clean["text"].str.strip())
+true_text = set(true_clean["text"].str.strip())
+
+common_text = fake_text.intersection(true_text)
+print("common Non-empty articles text in the data:",len(common_text))
+
+for text in list(common_text)[:10]:
+    print("\n" + "=" *80)
+    print("common text data : ",text[:500])
+
+    print("fake records:",
+          fake_clean[
+              fake_clean["text"].str.strip() == text
+              ][["title","subject","date"]]
+        )
+print("true records:",
+      true_clean[
+          true_clean["text"].str.strip() == text
+          ][["title","subject","date"]]
+    )

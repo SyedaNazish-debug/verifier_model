@@ -1,9 +1,9 @@
 import re
-import pandas as pd
+import pandas as pd  # type: ignore[import-not-found]
 import baseline_modf as bm
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import(
+from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore[import-not-found]
+from sklearn.linear_model import LogisticRegression  # type: ignore[import-not-found]
+from sklearn.metrics import(  # type: ignore[import-not-found]
     accuracy_score,
     classification_report,
     confusion_matrix

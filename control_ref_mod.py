@@ -1,9 +1,9 @@
 import re
-import pandas as pd  # type: ignore[import-not-found]
+import pandas as pd  
 import baseline_modf as bm
-from sklearn.feature_extraction.text import TfidfVectorizer  # type: ignore[import-not-found]
-from sklearn.linear_model import LogisticRegression  # type: ignore[import-not-found]
-from sklearn.metrics import(  # type: ignore[import-not-found]
+from sklearn.feature_extraction.text import TfidfVectorizer 
+from sklearn.linear_model import LogisticRegression  
+from sklearn.metrics import( 
     accuracy_score,
     classification_report,
     confusion_matrix
@@ -125,3 +125,44 @@ print("\n Top 30 feature in label 0th:",
       .head(30)
       .to_string(index=False)
     )
+
+
+###
+# Test samples for refined_clean_text()
+
+test_samples = [
+    
+    "Breaking news: https://example.com/article Government announces new policy.",
+    
+    "Visit our website at www.example.com for more information.",
+    
+    "Reuters reported that the economy is growing rapidly.",
+    
+    "Getty Images shows the aftermath of the event.",
+    
+    "Featured Image: A large crowd gathered outside the building.",
+    
+    "Follow updates at twitter.com/news for more details.",
+    
+    "Check this image pic.twitter.com/ABC123",
+    
+    "Read the full story [here](https://example.com/news/article).",
+    
+    "Reuters: Visit https://news.com/article and see Getty Images.",
+    
+    "   This   text    contains    multiple     spaces.   "
+]
+
+
+for i, sample in enumerate(test_samples, start=1):
+
+    cleaned = refined_clean_text(sample)
+
+    print(f"\n{'='*60}")
+    print(f"TEST {i}")
+
+    print("\nOriginal:")
+    print(sample)
+
+    print("\nCleaned:")
+    print(cleaned)

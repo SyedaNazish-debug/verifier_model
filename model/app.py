@@ -38,7 +38,7 @@ import joblib
 app = Flask(__name__)
 
 model = joblib.load("model/VERIFIER LENSE MODEL.pkl")
-vectorizer = joblib.load("model/TF-IDF_VECTORIZIER.pkl")
+vectorizer = joblib.load("model/TF-IDF_VECTORIZER.pkl")
 
 @app.route("/")
 def home():
@@ -47,16 +47,16 @@ def home():
 def predict():
     news_text = request.form.get("news_text")
     text_vector = vectorizer.transform([news_text])
-    prediction = model.predict(text_vector)[0]
+    predicton = model.predict(text_vector)[0]
     confidence = max(model.predict_proba(text_vector)[0])*100
 
-    if prediction == 1:
+    if predicton == 1:
         result = "FAKE NEWS"
     else:
         result = "REAL NEWS"
     return render_template(
         "index.html",
-        prediction=result,
+        predicton=result,
         confidence=round(confidence,2),
         news_text=news_text
     )

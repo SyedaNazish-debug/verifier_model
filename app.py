@@ -7,8 +7,9 @@ import os
 app = Flask(__name__)
 
 BASE_DIR =os.path.dirname(os.path.abspath(__file__))
+
 model= joblib.load(
-    os.path.join("model/VERIFIER LENSE MODEL.pkl")
+    os.path.join(BASE_DIR,"model","VERIFIER LENSE MODEL.pkl")
 )
 
 vectorizer = joblib.load(

@@ -1,0 +1,52 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <title> VVERIFIER LENSE MODEL</title>
+
+          <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>FAKE NEWS DETECTION SYSTEM</h1>
+        <form action="/predict" method="Post">
+
+            <label for = "news_text">
+                Enter news text:
+            </label>
+
+            <br><br>
+
+            <textarea
+            name="news_text"
+            id="news_text"
+            rows="10"
+            cols="70"
+            placeholder="Paste the new article here..."
+            required>
+            {{news_text or ''}}
+            </textarea>
+
+            <br><br>
+
+            <button type="submit">
+                Analyze news
+            </button>
+
+        </form>
+
+         {% if prediction %}
+
+         <hr>
+         <h2>Prediction Result</h2>
+         <h3>{{ prediction }}</h3>
+
+         <p>
+            Confidence: {{ confidence}}%
+         </p>
+
+         {% endif %}
+
+    </body>
+
+</html> -->

@@ -1,0 +1,525 @@
+/* SET CSS */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family: 'segoe UI',Arial, sans-serif;
+    background-color: #f5f7fb;
+    color:#172033;
+    line-height: 1.5;
+}
+
+a{
+    text-decoration: none;
+}
+
+.app{
+    display:flex;
+    min-height: 100vh;
+}
+
+/* LAYOUT */
+
+.sidebar{
+    width: 250px;
+    min-height: 100vh;
+    background: #943cca;
+    color:white;
+    padding:28px 18px;
+    position:static;
+    left:0;
+    top:0;
+    bottom:0;
+    z-index: 1000;
+    flex-shrink: 0;
+    overflow-x: hidden;
+   
+}
+.sidebar.open{
+    left:0;
+}
+
+.sidebar.open ~ .main-content .mobile-menu{
+    left: 190px;
+    top:25px;
+}
+
+.sidebar.open .sidebar-close{
+    display:block;
+}
+
+.sidebar-close{
+    display:none;
+    background:#e9e1ff;
+    border:1px solid #d8c9ff;
+    border-radius:8px;
+    color:#2d2350;
+    font-size:18px;
+    cursor:pointer;
+    padding:4px 8px;
+    flex-shrink:0;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    position:relative;
+}
+
+.brand-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
+.brand-text{
+    flex-shrink:0;
+}
+
+.sidebar-nav{
+    display:flex;
+    flex-direction: column;
+    gap:8px;
+}
+
+.sidebar-nav a {
+     text-decoration:none;
+     color:#aebbd0;
+     padding:13px 14px;
+     border-radius: 10px;
+     transition: 0.2s;
+     font-size: 15px;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active{
+    background:#071a33;
+    color:white;
+}
+
+/* MAIN CONTENT */
+
+.main-content{
+    flex:1;
+    min-width: 0;
+    min-height: 100vh;
+    padding: 28px 45px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* TOP-BAR */
+
+.topbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+
+.model-status{
+    background:#e9f9ef;
+    color: #168044;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* HERO */
+
+.hero{
+    background: linear-gradient(135deg , #eef2ff,#f5f3ff);
+    border-radius: 22px;
+    padding: 22px 30px;
+    margin-bottom: 30px;
+}
+
+.hero h1{
+    font-size: 34px;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 10px;
+}
+
+.hero h1 span{
+    color: #7c3aed;
+}
+
+.hero p{
+    color: #667085;
+    max-width: 650px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* SECTIONS */
+
+.section{
+    margin-bottom: 35px;
+}
+
+.section-title{
+    margin-bottom: 20px;
+    font-size: 42px;
+}
+
+.section-heading.center{
+    text-align: center;
+}
+
+.section-title h2{
+    font-size: 24px;
+}
+
+.section-title p{
+    color: #7a8497;
+    margin-top: 5px;
+}
+
+/* ANALYSIS CARD */
+
+.analysis-card{
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 8px 30px rgb( 20,30,50,0.08);
+}
+
+.analysis-card  label{
+    display: block;
+    font-weight:600;
+    margin-bottom: 10px;
+}
+
+textarea{
+    width: 100%;
+    min-height:200px;
+    resize: vertical;
+    border: 1px solid #dce1ea;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: inherit;
+    font-size: 15px;
+    outline:none;
+    transition: 0.2s;
+}
+
+textarea:focus{
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgb(139,92, 246,0.1);
+}
+
+.analyze-button{
+    margin-top: 14px;
+    background: linear-gradient(135deg, #7c3aed,#4f46e5);
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.analyze-button:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgb(79,70,229,0.25);
+}
+
+/* RESULT-CARD */
+
+.result-card{
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+    margin-top: 25px;
+    box-shadow: 0 8px 30px rgb( 20,30,50,0.08);
+}
+
+.result-card h3{
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+.result-card h3.fake-news{
+    color:red;
+}
+
+.result-card h3.real-news{
+    color:#16a34a;
+}
+
+.confidence-text{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.confidence-bar{
+    width:100%;
+    height: 12px;
+    background: #e8ebf1;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.confidence-fill{
+    width: var(--confidence);
+    height:100%;
+    background: linear-gradient(90deg,  #7c3aed, #4f46e5);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+}
+
+/* HOW IT WORKS */
+
+
+.how-section{
+    margin-top: 50px;
+}
+
+.steps{
+    display: grid;
+    width:100%;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 20px;
+}
+
+.steps-card{
+    width:100%;
+    min-width: 0;
+    background:white;
+    padding:24px;
+    border-radius:16px;
+    box-shadow: 0  8px 25px rgb(20,30,50,0.05);
+}
+
+.steps-number{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background: #ede9fe;
+    color: #7c3aed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.steps-card h3  {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.steps-card p {
+    color:#727b8d ;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ABOUT */
+
+.about-card{
+    background: white;
+    padding:28px;
+    border-radius: 18px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 25px rgb(20,30,50,0.05);
+    overflow: hidden;
+}
+
+.about-card p{
+    color: #697386;
+    line-height: 1.7;
+}
+
+.team-section{
+    margin-top:35px;
+    margin-bottom: 35px;
+}
+.section-heading.center{
+    text-align:center;
+}
+
+.team-cards{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+.team-card{
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgb(20,30,50,0.05);
+}
+
+
+.team-info h4{
+    font-size: 17px;
+    margin-bottom: 4px;
+}
+
+.team-info p{
+    color:#727b8d;
+    font-size: 14px;
+}
+
+.team-card p{
+    color: #727b8d;
+    font-size: 14px;
+}
+
+.team-avatar{
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    color: #7c3aed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.team-logo{
+    width:70px;
+    height: auto;
+    text-align: center;
+   margin:0 auto ;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align: center;
+    color:#8992a3;
+    font-size: 13px;
+    padding:25px 0;
+    overflow: hidden;
+}
+
+/* RESPONSIVE */
+
+.mobile-menu{
+    display:none;
+    position:fixed;
+    top:20px;
+    left:20px;
+    z-index:3000;
+    background:#e9e1ff;
+    border:1px solid #d8c9ff;
+    border-radius:8px;
+    padding:6px 10px;
+    font-size:20px;
+    color:#2d2350;
+    cursor:pointer;
+}
+
+@media(min-width:651) and (max-width: 900px){
+    .sidebar{
+        width:210px;
+    }
+    .main-content{
+        margin-left: 210px !important;
+        width:calc(100% - 210px);
+        padding:25px;
+        flex:1;
+    }
+}
+
+@media(max-width:650px){
+
+  .mobile-menu{
+    display:block;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 3000;
+  }
+    .app{
+        display:block;
+    }
+
+    .sidebar{
+        position:fixed;
+        top:0;
+        left:-260px;
+        width:250px;
+        height:100vh;
+        min-height:100vh;
+        padding:28px 18px;
+        z-index:2000;
+        transition:left 0.3s ease;
+        overflow-y:auto;
+        z-index: 2000;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .sidebar.open .sidebar-close{
+        display:block;
+    }
+
+    .main-content{
+        width:100%;
+        margin-left:0 !important;
+        padding:70px 20px 20px;
+    }
+
+    .topbar{
+        gap:10px;
+        align-items:center;
+        flex-direction:row;
+        margin-bottom:20px;
+    }
+
+    .hero{
+        padding:25px;
+    }
+
+    .hero h1{
+        font-size:28px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .analysis-card{
+        padding:20px;
+    }
+
+    textarea{
+        min-height:180px;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .team-cards{
+        grid-template-columns:1fr;
+    }
+
+    .about-card{
+        padding:20px;
+    }
+}

@@ -18,6 +18,7 @@ vectorizer = joblib.load(
 @app.route("/")
 def home():
     return render_template("index.html")
+
 @app.route("/predict", methods=["POST"])
 def predict():
     news_text = request.form.get("news_text")
@@ -25,7 +26,7 @@ def predict():
     prediction = model.predict(text_vector)[0]
     confidence = max(model.predict_proba(text_vector)[0])*100
 
-    if prediction == 1:
+    if prediction == 0:
         result = "FAKE NEWS"
     else:
         result = "REAL NEWS"

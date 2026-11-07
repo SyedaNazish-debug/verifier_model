@@ -1,0 +1,222 @@
+
+{% extends "base.html" %}
+
+{% block title %}Verifier Lense | Learn & Understand{% endblock %}
+
+{% block content %}
+
+<!-- PAGE INTRODUCTION -->
+<section class="page-intro">
+
+    <span class="section-label">LEARNING CENTER</span>
+
+    <h1>Learn & Understand</h1>
+
+    <p>
+        Understand the concepts and technologies used in
+        machine-learning-based news classification.
+    </p>
+
+</section>
+
+
+<!-- NLP -->
+<section class="about-card">
+
+    <span class="section-label">01 · FUNDAMENTALS</span>
+
+    <h2>What is Natural Language Processing?</h2>
+
+    <p>
+        Natural Language Processing (NLP) is a branch of Artificial
+        Intelligence that enables computers to process, analyze
+        and understand human language.
+
+        It is used in applications such as chatbots, language
+        translation, sentiment analysis and text classification.
+    </p>
+
+    <h3>How NLP relates to Verifier Lense</h3>
+
+    <p>
+        Verifier Lense processes news articles as text and prepares
+        them for machine learning classification.
+    </p>
+
+</section>
+
+
+<!-- TEXT PREPROCESSING -->
+<section class="about-card">
+
+    <span class="section-label">02 · TEXT PREPARATION</span>
+
+    <h2>Text Preprocessing</h2>
+
+    <p>
+        Text preprocessing is the process of cleaning and preparing
+        raw text before it is supplied to a machine learning model.
+
+        News articles may contain unnecessary spaces, URLs,
+        publisher references and other text elements.
+    </p>
+
+    <h3>Why is it important?</h3>
+
+    <p>
+        Cleaning text helps maintain consistency between the text
+        used during model training and the text submitted during
+        prediction.
+    </p>
+
+    <h3>Preprocessing in this project</h3>
+
+    <p>
+        Verifier Lense uses a custom text-cleaning function to
+        remove selected unwanted text patterns and normalize
+        whitespace before feature extraction.
+    </p>
+
+</section>
+
+
+<!-- TF-IDF -->
+<section class="about-card">
+
+    <span class="section-label">03 · FEATURE EXTRACTION</span>
+
+    <h2>TF-IDF Vectorization</h2>
+
+    <p>
+        TF-IDF stands for Term Frequency-Inverse Document Frequency.
+        It is a statistical technique used to represent text
+        numerically based on the importance of words in a document
+        relative to a collection of documents.
+    </p>
+
+    <h3>Two main components</h3>
+
+    <div class="steps">
+
+        <div class="steps-card">
+
+            <div class="steps-number">TF</div>
+
+            <h3>Term Frequency</h3>
+
+            <p>
+                Measures how frequently a term appears in a document.
+            </p>
+
+        </div>
+
+        <div class="steps-card">
+
+            <div class="steps-number">IDF</div>
+
+            <h3>Inverse Document Frequency</h3>
+
+            <p>
+                Reduces the weight of terms that appear frequently
+                across many documents.
+            </p>
+
+        </div>
+
+    </div>
+
+    <h3>Why does Verifier Lense use TF-IDF?</h3>
+
+    <p>
+        The trained vectorizer converts news text into numerical
+        features that can be processed by the Logistic Regression
+        classifier.
+    </p>
+
+</section>
+
+
+<!-- LOGISTIC REGRESSION -->
+<section class="about-card">
+
+    <span class="section-label">04 · CLASSIFICATION</span>
+
+    <h2>Logistic Regression</h2>
+
+    <p>
+        Logistic Regression is a supervised machine learning
+        algorithm commonly used for classification tasks.
+
+        It estimates the probability of an input belonging to
+        a particular class and uses a decision rule to assign
+        the predicted category.
+    </p>
+
+    <h3>Application in this project</h3>
+
+    <p>
+        Verifier Lense uses a trained Logistic Regression classifier
+        to categorize the numerical text features into real-news
+        or fake-news classes.
+    </p>
+
+</section>
+
+
+<!-- COMPLETE WORKFLOW -->
+<section class="about-card">
+
+    <span class="section-label">05 · COMPLETE WORKFLOW</span>
+
+    <h2>How all the components work together</h2>
+
+    <div class="steps">
+
+        <div class="steps-card">
+            <div class="steps-number">01</div>
+            <h3>News Input</h3>
+            <p>Receive the article submitted by the user.</p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">02</div>
+            <h3>Preprocessing</h3>
+            <p>Clean the submitted text.</p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">03</div>
+            <h3>TF-IDF</h3>
+            <p>Transform text into numerical features.</p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">04</div>
+            <h3>Prediction</h3>
+            <p>Generate the predicted news category.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- LEARNING DISCLAIMER -->
+<section class="about-card">
+
+    <span class="section-label">REMEMBER</span>
+
+    <h2>Classification is not fact-checking.</h2>
+
+    <p>
+        A machine learning model learns patterns from its training
+        dataset. Its prediction does not independently establish
+        whether a news claim is true or false.
+
+        Always consult reliable sources and independent fact-checking
+        resources when evaluating information.
+    </p>
+
+</section>
+
+{% endblock %}

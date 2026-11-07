@@ -1,483 +1,204 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
-        <title> VVERIFIER LENSE MODEL</title>
 
-          <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <h1>FAKE NEWS DETECTION SYSTEM</h1>
-        <form action="/predict" method="Post">
+{% extends "base.html" %}
 
-            <label for = "news_text">
-                Enter news text:
-            </label>
+{% block title %}Verifier Lense | Dashboard{% endblock %}
 
-            <br><br>
+{% block content %}
 
-            <textarea
-            name="news_text"
-            id="news_text"
-            rows="10"
-            cols="70"
-            placeholder="Paste the new article here..."
-            required>
-            {{news_text or ''}}
-            </textarea>
+<!-- DASHBOARD HERO -->
+<section class="hero" id="dashboard">
 
-            <br><br>
+    <div class="hero-content">
 
-            <button type="submit">
-                Analyze news
-            </button>
+        <span class="hero-tag">
+            MACHINE LEARNING NEWS CLASSIFICATION
+        </span>
 
-        </form>
+        <h1>
+            Understand the news.
+            <span>Analyze the patterns.</span>
+        </h1>
 
-         {% if prediction %}
+        <p>
+            Verifier Lense uses Natural Language Processing techniques
+            and machine learning to classify submitted news articles
+            into real and fake categories.
+        </p>
 
-         <hr>
-         <h2>Prediction Result</h2>
-         <h3>{{ prediction }}</h3>
+        <a href="/analyzer" class="hero-button">
+            Open News Analyzer
+            <span>→</span>
+        </a>
 
-         <p>
-            Confidence: {{ confidence}}%
-         </p>
+    </div>
 
-         {% endif %}
-
-    </body>
-
-</html> -->
+</section>
 
 
+<!-- PROJECT OVERVIEW -->
+<section class="dashboard-overview">
 
-<!DOCTYPE html>
-<html lang="en">
+    <div class="section-heading">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width" , initial-scale="1.0">
-    <title>VERIFIER LENSE MODEL</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-</head>
+        <span class="section-label">
+            PROJECT OVERVIEW
+        </span>
 
-<body>
-    <div class="app">
-        <!=================SIDEBAR=================>
+        <h2>What powers Verifier Lense?</h2>
 
-            <aside class="sidebar">
-                <div class="brand">
-                        <img src="{{url_for('static',filename='VLM-LOGO.png')}}" class="brand-logo" alt="Verifier lense Model">
+        <p>
+            The system combines text preprocessing, feature extraction
+            and supervised machine learning.
+        </p>
 
-                    <div>
-                        <h1>VERIFIER LENSE MODEL</h1>
-                        <p>FAKE NEWS DETECTION SYSTEM</p>
-                    </div>
-                        <button class="sidebar-close" onclick="toggleSidebar()">✕</button>
-
-                </div>
-
-                <nav class="sidebar-nav">
-                    <a href="/" class="nav-item active">
-                        <span class="nav-icon">🔎</span>
-                        Analyze news
-                    </a>
-                    <a href="#how-it-works" class="nav-item">
-                        <span class="nav-icon">❔</span>
-                        HOW DOES IT WORK?
-                    </a>
-                    <a href="#about" class="nav-item">
-                        <span class="nav-icon">ℹ️</span>
-                        ABOUT
-                    </a>
-                </nav>
-
-                <div class="sidebar-button">
-                    <div class="model-info">
-                        <div class="shield"></div>
-                        ✔️
-                    </div>
-
-                    <div>
-                        <strong>AI powered Detection</strong>
-                        <p>
-                            SYSTEM BACKED BY A MACHINE LEARNING MODEL!
-                        </p>
-                    </div>
-
-                </div>
-
-                <div class="sidebar-footer">
-                    <p>
-                        VERIFIER LENSE MODEL
-                    </p>
-                    <span>
-                        MACHINE LEARNING BASED FAKE NEWS DETECTION SYSTEM
-                    </span>
-                </div>
-
-            </aside>
-            <!=================MAIN=================>
-        <main class="main-content">
-                    <! - - TOP BAR - ->
-                             <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
-
-                        <header class="topbar">
-                            <div>
-                                <p class="breadcrumb"></p>
-                                <h2>
-                                    WELCOME TO VERIFIER LENSE MODEL
-                                </h2>
-
-                                <P class="subtitle">
-                                    Detecting and analyzing news's authenticity using machine learning model.
-                                </p>
-                            </div>
-
-                            <div class="topbar-bagde">
-                                <span class="status-dot"></span>
-                                Model online 🟢
-                            </div>
-
-                        </header>
+    </div>
 
 
-                        <! - - HERO SECTION - ->
-                            <section class="hero">
-                                <div class="hero-content">
-                                    <span class="hero-tag">
-                                        AI POWERED NEWS VERIFICATION SYSTEM
-                                    </span>
-                                </div>
+    <div class="steps">
 
-                                <h1>
-                                    Detect
-                                    <span>NEWS</span>
-                                    within a few seconds
-                                </h1>
-                                <p>
-                                    Paste the news article below and let our machine learning model analyze the
-                                    authenticity of the article.
-                                </p>
+        <div class="steps-card">
 
-                                <a href="#analyze" class="hero-button">
-                                    Analyze News
-                                    <span>➡️</span>
-                                </a>
-    <div class="hero-visual">
-        <div class="news-window">
-            <div class="window-top">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="news-lines">
-                <div calss="news-title"></div>
-                <div class="new-line long"></div>
-                <div class="news-line medium"></div>
+            <div class="steps-number">01</div>
 
-                <div class="news-block">
-                    <div class="fake-badge">
-                        ❕
-                    </div>
-                    <div>
-                        <strong>VERIFY</strong>
-                        <small>Before you believe it</small>
-                    </div>
-                </div>
+            <h3>Text Preprocessing</h3>
 
-            </div>
+            <p>
+                The submitted news text is cleaned before being
+                transformed into numerical features.
+            </p>
+
+        </div>
+
+
+        <div class="steps-card">
+
+            <div class="steps-number">02</div>
+
+            <h3>TF-IDF Vectorization</h3>
+
+            <p>
+                Text is converted into numerical representations
+                using the trained TF-IDF vectorizer.
+            </p>
+
+        </div>
+
+
+        <div class="steps-card">
+
+            <div class="steps-number">03</div>
+
+            <h3>Logistic Regression</h3>
+
+            <p>
+                The trained classification model predicts the
+                category of the submitted news article.
+            </p>
+
+        </div>
+
+
+        <div class="steps-card">
+
+            <div class="steps-number">04</div>
+
+            <h3>Prediction Output</h3>
+
+            <p>
+                The application displays the predicted category
+                and the model's confidence score.
+            </p>
 
         </div>
 
     </div>
-    
 
-    </section>
+</section>
 
-    <! - - ANALYZE SECTION - ->
-        <section class="analysis-card" id="analyze">
-            <div class="section-heading">
-                <div>
-                    <span class="section-label">
-                      ✨
-                    </span>
-                    <h2>
-                        Analyze News Article
-                    </h2>
-                    <p>
-                        Enter the news article below and let our machine learning model analyze the authenticity of the
-                        article,
-                        To check whether it's fake or real.
-                    </p>
-                </div>
 
-            </div>
-            <form action="/predict" method="POST">
-                <div class="input-header">
-                    <label for="news_text">
-                        NEWS ARTICLE
-                    </label>
-                    <span>
-                        Paste the complete new article for better analysis.
-                    </span>
+<!-- MODEL SUMMARY -->
+<section class="about-card">
 
-                </div>
-                <textarea name="news_text" id="news_text" rows="10" maxlength="100"
-                    placeholder="Paste the news article you want to clarify here..."
-                    required>{{ news_text or ''}}</textarea> ></textarea>
+    <span class="section-label">
+        MACHINE LEARNING MODEL
+    </span>
 
-                <div class="input-footer">
-                    <span>
-                        Maximum 5000 characters limit.
-                    </span>
-                    <button type="submit" class="analyze-button">
-                        Analyze
-                        <span>
-                            ❇️
-                        </span>
-                    </button>
-                </div>
+    <h2>Built around text classification.</h2>
 
-            </form>
+    <p>
+        Verifier Lense uses a trained Logistic Regression classifier
+        with TF-IDF feature extraction.
 
-        </section>
+        The model processes textual patterns learned during training
+        and predicts whether submitted content belongs to the real
+        or fake news category.
 
-        <! - - result section - ->
+        Its output is a machine-learning prediction, not independent
+        verification of the article's factual accuracy.
+    </p>
 
-            {% if prediction %}
-            <section class="result-card">
-                <div class="result-top">
-                    <div>
-                        <span class="label">
-                            ANALYSIS COMPLETED
-                        </span>
+    <a href="/model-insights" class="hero-button">
+        Explore Model Insights →
+    </a>
 
-                        <h2>
-                            Prediction Result
-                        </h2>
-                    </div>
-                    <div class="result-check">
-                        ✓
-                    </div>
+</section>
 
-                </div>
 
-                <div class="result-grid">
-                    <div class="result-box">
-                        <span class="result-label">
-                            DETECTION RESULT
-                        </span>
+<!-- DASHBOARD NAVIGATION -->
+<section class="dashboard-links">
 
-                        <h3 class="{{prediction|lower|replace(' ','-')}}">
-                            {{prediction}}
-                        </h3>
-                    </div>
+    <div class="section-heading">
 
-                    <div class="result-box confidence-box">
-                        <span class="result-label">
-                            MODEL CONFIDENCE
-                        </span>
-                        <div class="confidence-value">
-                            {{confidence}}%
-                        </div>
-                        <div class="confidence-bar">
-                            <div class="confidence-fill" style="--confidence: {{confidence}}%;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <span class="section-label">
+            EXPLORE THE PROJECT
+        </span>
 
-            </section>
+        <h2>Continue exploring</h2>
 
-            {% endif %}
+    </div>
 
-            <! - - HOW IT WORKS SECTION - ->
+    <div class="team-cards">
 
-    <section class="how-section" id="how-it-works">
-                    <div class="section-heading center">
-                        <span class="section-label">
-                            <strong>HOW IT WORKS</strong>
-                        </span>
-                        <h2>
-                            From news article to prediction.
-                        </h2>
-                        <p>
-                            YOUR ARTICLE IS PASSES THROUGH A SIMPLE ML PIPLINE FOR ANALYSIS AND PREDICTION IS MADE.
-                        </p>
+        <div class="team-card">
 
-                    </div>
-                <div class="steps">
+            <h3>News Analyzer</h3>
 
-                        <div class="steps-card">
-                            <div class="steps-number">
-                                01
-                            </div>
+            <p>
+                Submit news text and view its classification prediction.
+            </p>
 
-                            <h3>
-                                Enter news.
-                            </h3>
+            <a href="/analyzer">Open Analyzer →</a>
 
-                            <p>
-                                Paste the news article into the analysis scetion and click the analyze button to start
-                                the analysis.
-                            </p>
-                        </div>
+        </div>
 
-                        <div class="steps-card">
-                            <div class="steps-number">
-                                02
-                            </div>
 
-                            <h3>text processing</h3>
-                            <p>
-                                  The article is transormed into a numerical feature for preprocessing using
-                                   TF-IDF vectorizer and then passed to the machine learning model for prediction.
-                            </p>
+        <div class="team-card">
 
-                        </div>
+            <h3>Model Insights</h3>
 
-                         <div class="steps-card">
-                             <div class="steps-number">
-                                03
-                            </div>
+            <p>
+                Understand the model architecture and evaluation.
+            </p>
 
-                            <h3>
-                                ML Prediction
-                            </h3>
+            <a href="/model-insights">Explore Model →</a>
 
-                             <p>
-                            The Machine learning trinedclassifcation model analyze and pediction the
-                            processed text and returns the result to the user with a confidence score.
-                             </p>
+        </div>
 
-                         </div>
 
-                    <div class="steps-card">
-                        <div class="steps-number">
-                                04
-                        </div>
-                        <h3>
-                             Get result.
-                        </h3>
-                        <p>
-                            View the predicted category and model confidence score.
-                        </p>
+        <div class="team-card">
 
-                    </div>
+            <h3>Learn & Understand</h3>
 
-                </div>
+            <p>
+                Learn about text preprocessing, TF-IDF and classification.
+            </p>
 
-            </div>
+            <a href="/learn">Start Learning →</a>
 
-    </section>
+        </div>
 
-                <! - - ABOUT SECTION - ->
-                <section class="about-card" id="about">
-                        <div>
-                            <span class="section-label">
-                                ABOUT VERIFIER LENSE MODEL
-                            </span>
-                            <h2>
-                                Making news verification
-                                More accessibale and easier for everyone.
-                            </h2>
+    </div>
 
-                        </div>
+</section>
 
-                        <p>
-                            Verifier Lense Model is a machine learning based fake news detection system designed to
-                            classify news content as real or fake.
-                            The systemuses a trainedclassification model to analyze and predict the authenticity of
-                            news articles.
-                            It uses TF-IDF vectorization for text preprocessing and a machine learning model for
-                            prediction.
-                            The system is designed to be user-friendly and accessible to everyone, making it easier to
-                            verify the authenticity of news articles.
-                        </p>
-
-                </section>
-
-                <! - - team members detail section - ->
-
-                  <section class="team-section">
-                    <div class="section-heading center">
-                        <span>
-                            <h3>PROJECT TEAM</h3>                        
-                        </span>
-                            <div class="team-logo">
-                            <img src="{{url_for('static',filename='team-logo.png')}}" class="team-logo" alt="student">
-                            </div>  
-                </div>
-                    <div class="team-cards">
-                    <div class="team-card">
-                        <div class="team-info">
-                        <h4>
-                            Syeda Nazish
-                        </h4>
-                        <p>Team member Role : Developer </p>
-                    </div>
-                    </div>
-
-                    <div class="team-card">
-                        <div class="team-info">
-                        <h4>
-                          Afifa Naaz
-                        </h4>
-                        <p>Team member Role : Designer </p>
-                    </div>
-                    </div>
-                  
-
-                    <div class="team-card">
-                      <div class="team-info">
-                        <h4>
-                          Nabiji zunera 
-                        </h4>
-                        <p>Team member Role : Researcher </p>
-                    </div>
-                    </div>
-                </div>
-
-                </section>
-        
-                               
-
-                <!- - FOOTER SECTION - ->
-                  <section>
-                            <footer class="footer">
-                                <div>
-                                    <strong>"VERIFIER LENSE MODEL:</strong>
-                                    <span>
-                                        <strong>A NEWS DETECTION SYSTEM"</strong>
-                                    </span>
-
-                                </div>
-                                <span>
-                                    BCA THIRD YEAR CAPSTON PROJECT 2026-27 SEMESTER 5TH
-                                </span>
-                            </footer>
-                        
-                    </section>        
-
-                </main>
-
-<script>
-    function toggleSidebar() {
-    const sidebar = document.querySelector(".sidebar");
-    const menuButton = document.querySelector(".mobile-menu");
-
-    sidebar.classList.toggle("open");
-
-    if (sidebar.classList.contains("open")) {
-        menuButton.style.display = "none";
-    } else {
-        menuButton.style.display = "block";
-    }
-}
-</script>
-</body>
-
-</html>
+{% endblock %}

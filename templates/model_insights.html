@@ -1,0 +1,164 @@
+
+{% extends "base.html" %}
+
+{% block title %}Verifier Lense | Model Insights{% endblock %}
+
+{% block content %}
+
+<!-- PAGE INTRODUCTION -->
+<section class="page-intro">
+
+    <span class="section-label">MODEL OVERVIEW</span>
+
+    <h1>Model Insights</h1>
+
+    <p>
+        Explore the machine learning techniques, architecture
+        and evaluation results behind Verifier Lense.
+    </p>
+
+</section>
+
+
+<!-- MODEL ARCHITECTURE -->
+<section class="about-card">
+
+    <span class="section-label">MODEL ARCHITECTURE</span>
+
+    <h2>How the classification model works</h2>
+
+    <p>
+        Verifier Lense uses a supervised machine learning approach
+        combining TF-IDF feature extraction with a Logistic Regression
+        classifier.
+    </p>
+
+    <div class="steps">
+
+        <div class="steps-card">
+            <div class="steps-number">01</div>
+            <h3>Input Text</h3>
+            <p>
+                The news article is submitted as textual input.
+            </p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">02</div>
+            <h3>Preprocessing</h3>
+            <p>
+                Text cleaning prepares the article for feature extraction.
+            </p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">03</div>
+            <h3>TF-IDF</h3>
+            <p>
+                Text is converted into numerical features using
+                Term Frequency-Inverse Document Frequency.
+            </p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">04</div>
+            <h3>Classification</h3>
+            <p>
+                Logistic Regression predicts the real or fake category.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TECHNOLOGY DETAILS -->
+<section class="analysis-card">
+
+    <span class="section-label">TECHNICAL COMPONENTS</span>
+
+    <h2>Technologies used</h2>
+
+    <div class="team-cards">
+
+        <div class="team-card">
+            <h3>TF-IDF Vectorizer</h3>
+            <p>
+                Converts text into numerical feature representations
+                based on word importance.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <h3>Logistic Regression</h3>
+            <p>
+                A supervised classification algorithm used to predict
+                the category of news articles.
+            </p>
+        </div>
+
+        <div class="team-card">
+            <h3>Flask</h3>
+            <p>
+                Provides the web application interface and connects
+                user input with the trained model.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MODEL EVALUATION -->
+<section class="about-card">
+
+    <span class="section-label">MODEL EVALUATION</span>
+
+    <h2>Test-set performance</h2>
+
+    <div class="result-box">
+
+        <span class="result-label">TEST ACCURACY</span>
+
+        <div class="confidence-value">97.93%</div>
+
+        <p>
+            Recorded during evaluation on the held-out 20% test split of the training dataset, comprising 7,731 records.
+
+Accuracy represents the proportion of correctly classified test records. It does not guarantee the same performance on every new article or dataset.
+        </p>
+
+    </div>
+
+    <p>
+        Accuracy represents the proportion of correctly classified
+        test records. It does not guarantee the same performance
+        on every new article or dataset.
+    </p>
+
+</section>
+
+
+<!-- LIMITATIONS -->
+<section class="about-card">
+
+    <span class="section-label">MODEL LIMITATIONS</span>
+
+    <h2>What the model cannot guarantee</h2>
+
+    <p>
+        The classifier identifies textual patterns learned from
+        its training data. It does not independently verify claims,
+        consult live news sources, or establish the factual accuracy
+        of an article.
+
+        Its predictions may be affected by unfamiliar topics,
+        changing language patterns, misleading text and limitations
+        in the training dataset.
+    </p>
+
+</section>
+
+{% endblock %}

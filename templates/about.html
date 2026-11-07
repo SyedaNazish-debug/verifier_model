@@ -1,0 +1,222 @@
+
+{% extends "base.html" %}
+
+{% block title %}Verifier Lense | About the Project{% endblock %}
+
+{% block content %}
+
+<!-- PAGE INTRODUCTION -->
+<section class="page-intro">
+
+    <span class="section-label">ABOUT THE PROJECT</span>
+
+    <h1>About Verifier Lense</h1>
+
+    <p>
+        A Bachelor of Computer Applications mini project
+        focused on machine-learning-based fake news classification.
+    </p>
+
+</section>
+
+
+<!-- PROJECT INTRODUCTION -->
+<section class="about-card">
+
+    <span class="section-label">PROJECT INTRODUCTION</span>
+
+    <h2>What is Verifier Lense?</h2>
+
+    <p>
+        Verifier Lense is a machine-learning-based text classification
+        application designed to categorize submitted news articles
+        into real-news and fake-news classes.
+
+        The system uses Natural Language Processing techniques,
+        text preprocessing, TF-IDF feature extraction and a trained
+        Logistic Regression classifier to generate predictions.
+
+        It provides an interactive web interface through which
+        users can submit news text and view the model's prediction
+        along with its confidence score.
+    </p>
+
+</section>
+
+
+<!-- PROJECT OBJECTIVES -->
+<section class="about-card">
+
+    <span class="section-label">PROJECT OBJECTIVES</span>
+
+    <h2>What does this project aim to achieve?</h2>
+
+    <div class="steps">
+
+        <div class="steps-card">
+            <div class="steps-number">01</div>
+            <h3>Text Classification</h3>
+            <p>
+                Develop a system that classifies submitted news
+                articles into predefined categories.
+            </p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">02</div>
+            <h3>Machine Learning</h3>
+            <p>
+                Apply supervised learning techniques to
+                text classification.
+            </p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">03</div>
+            <h3>User Accessibility</h3>
+            <p>
+                Provide a simple interface for submitting
+                and analyzing news text.
+            </p>
+        </div>
+
+        <div class="steps-card">
+            <div class="steps-number">04</div>
+            <h3>Learning Application</h3>
+            <p>
+                Demonstrate how NLP and machine learning
+                can be integrated into a web application.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TECHNOLOGY STACK -->
+<section class="analysis-card">
+
+    <span class="section-label">TECHNOLOGY STACK</span>
+
+    <h2>Tools and technologies</h2>
+
+    <div class="team-cards">
+
+        <div class="team-card">
+            <h3>Python</h3>
+            <p>Core programming language.</p>
+        </div>
+
+        <div class="team-card">
+            <h3>Flask</h3>
+            <p>Web application framework.</p>
+        </div>
+
+        <div class="team-card">
+            <h3>Scikit-learn</h3>
+            <p>Machine learning and classification.</p>
+        </div>
+
+        <div class="team-card">
+            <h3>HTML & CSS</h3>
+            <p>Frontend structure and styling.</p>
+        </div>
+
+        <div class="team-card">
+            <h3>Joblib</h3>
+            <p>Loading the saved model and vectorizer.</p>
+        </div>
+
+        <div class="team-card">
+            <h3>TF-IDF</h3>
+            <p>Text feature extraction.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT TEAM -->
+<section class="team-section">
+
+    <div class="section-heading center">
+
+        <span class="section-label">PROJECT TEAM</span>
+
+        <h2>Meet the team</h2>
+
+        <p>
+            The students involved in developing Verifier Lense.
+        </p>
+
+        <div class="team-logo">
+
+            <img
+                src="{{ url_for('static', filename='team-logo.png') }}"
+                alt="Verifier Lense project team logo"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="team-cards">
+
+        <div class="team-card">
+
+            <div class="team-info">
+                <h4>Syeda Nazish</h4>
+                <p>Team Role: Developer</p>
+            </div>
+
+        </div>
+
+
+        <div class="team-card">
+
+            <div class="team-info">
+                <h4>Afifa Naaz</h4>
+                <p>Team Role: Designer</p>
+            </div>
+
+        </div>
+
+
+        <div class="team-card">
+
+            <div class="team-info">
+                <h4>Nabiji Zunera</h4>
+                <p>Team Role: Researcher</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT LIMITATIONS -->
+<section class="about-card">
+
+    <span class="section-label">PROJECT SCOPE & LIMITATIONS</span>
+
+    <h2>Understanding the system's scope</h2>
+
+    <p>
+        Verifier Lense performs machine-learning-based text
+        classification. It does not independently verify news
+        claims, retrieve live news reports or guarantee factual
+        accuracy.
+
+        Its predictions depend on patterns learned from the
+        training dataset and should be treated as classification
+        outputs rather than definitive judgments.
+    </p>
+
+</section>
+
+{% endblock %}

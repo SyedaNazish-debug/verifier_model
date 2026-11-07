@@ -1,0 +1,184 @@
+
+{% extends "base.html" %}
+
+{% block title %}Verifier Lense | News Analyzer{% endblock %}
+
+{% block content %}
+
+<!-- PAGE INTRODUCTION -->
+<section class="page-intro">
+
+    <span class="section-label">NEWS CLASSIFICATION</span>
+
+    <h1>News Analyzer</h1>
+
+    <p>
+        Submit a news article to receive a prediction from
+        the trained machine learning classification model.
+    </p>
+
+</section>
+
+
+<!-- ANALYZER FORM -->
+<section class="analysis-card">
+
+    <div class="section-heading">
+
+        <span class="section-label">TEXT ANALYSIS</span>
+
+        <h2>Analyze News Article</h2>
+
+        <p>
+            Enter the article text below. The system will process
+            the text and generate a classification prediction.
+        </p>
+
+    </div>
+
+
+    <form action="{{ url_for('predict') }}" method="POST">
+
+        <div class="input-header">
+
+            <label for="news_text">NEWS ARTICLE</label>
+
+            <span>
+                Paste the complete news article for analysis.
+            </span>
+
+        </div>
+
+
+        <textarea
+            name="news_text"
+            id="news_text"
+            rows="10"
+            maxlength="5000"
+            placeholder="Paste the news article you want to analyze here..."
+            required
+        >{{ news_text or '' }}</textarea>
+
+
+        <div class="input-footer">
+
+            <span>Maximum 5000 characters.</span>
+
+            <button type="submit" class="analyze-button">
+                Analyze News
+                <span>✦</span>
+            </button>
+
+        </div>
+
+    </form>
+
+</section>
+
+
+<!-- ERROR MESSAGE -->
+{% if error %}
+
+<div class="error-message" role="alert">
+
+    <strong>Analysis Error</strong>
+
+    <p>{{ error }}</p>
+
+</div>
+
+{% endif %}
+
+
+<!-- PREDICTION RESULT -->
+{% if prediction %}
+
+<section class="result-card">
+
+    <div class="result-top">
+
+        <div>
+
+            <span class="section-label">
+                ANALYSIS COMPLETED
+            </span>
+
+            <h2>Prediction Result</h2>
+
+        </div>
+
+        <div class="result-check">✓</div>
+
+    </div>
+
+
+    <div class="result-grid">
+
+        <div class="result-box">
+
+            <span class="result-label">
+                PREDICTED CATEGORY
+            </span>
+
+            <h3 class="{{ prediction|lower|replace(' ', '-') }}">
+                {{ prediction }}
+            </h3>
+
+        </div>
+
+
+        <div class="result-box confidence-box">
+
+            <span class="result-label">
+                MODEL CONFIDENCE
+            </span>
+
+            <div class="confidence-value">
+                {{ confidence }}%
+            </div>
+
+            <div class="confidence-bar">
+
+                <div
+                    class="confidence-fill"
+                    style="--confidence: {{ confidence }}%;"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <p class="result-disclaimer">
+        The confidence score represents the model's probability
+        estimate for its predicted class. It does not establish
+        the factual accuracy of the submitted article.
+    </p>
+
+</section>
+
+{% endif %}
+
+
+<!-- USAGE INFORMATION -->
+<section class="about-card">
+
+    <span class="section-label">IMPORTANT INFORMATION</span>
+
+    <h2>Understand the prediction</h2>
+
+    <p>
+        Verifier Lense is a machine-learning-based text classification
+        system. Its predictions are based on patterns learned from
+        its training data.
+
+        A prediction should not be treated as proof that an article
+        is factually true or false. Consult reliable sources and
+        independent fact-checking resources before sharing news.
+    </p>
+
+</section>
+
+{% endblock %}

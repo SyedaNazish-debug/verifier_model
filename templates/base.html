@@ -1,142 +1,140 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>{% block title %}Verifier Lense{% endblock %}</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 
     <script>
-        // Apply the saved theme before rendering the page
-        const savedTheme = localStorage.getItem("verifier-theme");
+      // Apply the saved theme before rendering the page
+      const savedTheme = localStorage.getItem("verifier-theme");
 
-        if (savedTheme === "dark") {
-            document.documentElement.setAttribute("data-theme", "dark");
-        }
+      if (savedTheme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
     </script>
-</head>
+  </head>
 
-<body>
-
-<div class="app">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
-
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar" id="sidebar">
         <div class="brand">
+          <img
+            src="{{ url_for('static', filename='VLM-LOGO.png') }}"
+            alt="Verifier Lense Logo"
+            class="brand-logo"
+          />
 
-            <img src="{{ url_for('static', filename='VLM-LOGO.png') }}"
-                 alt="Verifier Lense Logo"
-                 class="brand-logo">
+          <div class="brand-text">Verifier Lense</div>
 
-            <div class="brand-text">
-                Verifier Lense
-            </div>
-
-            <button class="sidebar-close"
-                    type="button"
-                    onclick="toggleSidebar()"
-                    aria-label="Close navigation">
-                ×
-            </button>
-
+          <button
+            class="sidebar-close"
+            type="button"
+            onclick="toggleSidebar()"
+            aria-label="Close navigation"
+          >
+            ×
+          </button>
         </div>
-
 
         <!-- NAVIGATION -->
         <nav class="sidebar-nav">
+          <a
+            href="{{ url_for('home') }}"
+            class="nav-item {% if request.endpoint == 'home' %}active{% endif %}"
+          >
+            Dashboard
+          </a>
 
-            <a href="{{ url_for('home') }}"
-               class="nav-item {% if request.endpoint == 'home' %}active{% endif %}">
-                Dashboard
-            </a>
+          <a
+            href="{{ url_for('analyzer') }}"
+            class="nav-item {% if request.endpoint in ['analyzer', 'predict'] %}active{% endif %}"
+          >
+            News Analyzer
+          </a>
 
-            <a href="{{ url_for('analyzer') }}"
-               class="nav-item {% if request.endpoint in ['analyzer', 'predict'] %}active{% endif %}">
-                News Analyzer
-            </a>
+          <a
+            href="{{ url_for('model_insights') }}"
+            class="nav-item {% if request.endpoint == 'model_insights' %}active{% endif %}"
+          >
+            Model Insights
+          </a>
 
-            <a href="{{ url_for('model_insights') }}"
-               class="nav-item {% if request.endpoint == 'model_insights' %}active{% endif %}">
-                Model Insights
-            </a>
+          <a
+            href="{{ url_for('learn') }}"
+            class="nav-item {% if request.endpoint == 'learn' %}active{% endif %}"
+          >
+            Learn & Understand
+          </a>
 
-            <a href="{{ url_for('learn') }}"
-               class="nav-item {% if request.endpoint == 'learn' %}active{% endif %}">
-                Learn & Understand
-            </a>
-
-            <a href="{{ url_for('about') }}"
-               class="nav-item {% if request.endpoint == 'about' %}active{% endif %}">
-                About the Project
-            </a>
-
+          <a
+            href="{{ url_for('about') }}"
+            class="nav-item {% if request.endpoint == 'about' %}active{% endif %}"
+          >
+            About the Project
+          </a>
         </nav>
+      </aside>
 
-    </aside>
-
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-
-        <button class="mobile-menu"
-                type="button"
-                onclick="toggleSidebar()"
-                aria-label="Open navigation"
-                aria-expanded="false">
-            ☰
-        </button>
-
-
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
         <!-- TOPBAR -->
         <header class="topbar">
-
-            <div class="model-status">
-                ML Classifier Interface
-            </div>
-
-            <button type="button"
-                    id="themeToggle"
-                    class="theme-toggle"
-                    onclick="toggleTheme()"
-                    aria-label="Switch theme">
-                🌙 Dark Mode
+          <div class="topbar-left">
+            <button
+              class="mobile-menu"
+              type="button"
+              onclick="toggleSidebar()"
+              aria-label="Open navigation"
+              aria-expanded="false"
+            >
+              ☰
             </button>
 
+            <div class="topbar-brand">
+              <img
+                src="{{ url_for('static', filename='VLM-LOGO.png') }}"
+                alt="Verifier Lense Logo"
+                class="topbar-brand-logo"
+              />
+
+              <span class="topbar-brand-name">Verifier Lense</span>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            id="themeToggle"
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            aria-label="Switch theme"
+          >
+            ☾
+          </button>
         </header>
 
-
         <!-- PAGE CONTENT -->
-        {% block content %}
-        {% endblock %}
-
+        {% block content %} {% endblock %}
 
         <!-- FOOTER -->
         <footer class="footer">
-            <p>
-                Verifier Lense | Machine Learning News Classification
-            </p>
-            <p>
-              A BCA TY Capstone Project
-            </p>
+          <p>Verifier Lense | Machine Learning News Classification</p>
+          <p>A BCA TY Capstone Project</p>
         </footer>
+      </main>
+    </div>
 
-    </main>
-
-</div>
-
-
-<!-- JAVASCRIPT -->
-<script>
-
-    // SIDEBAR CONTROL
-    function toggleSidebar() {
-
+    <!-- JAVASCRIPT -->
+    <script>
+      // SIDEBAR CONTROL
+      function toggleSidebar() {
         const sidebar = document.getElementById("sidebar");
         const menuButton = document.querySelector(".mobile-menu");
 
@@ -146,13 +144,10 @@
 
         menuButton.style.display = isOpen ? "none" : "block";
         menuButton.setAttribute("aria-expanded", isOpen);
+      }
 
-    }
-
-
-    // THEME CONTROL
-    function applyTheme(theme) {
-
+      // THEME CONTROL
+      function applyTheme(theme) {
         document.documentElement.setAttribute("data-theme", theme);
 
         localStorage.setItem("verifier-theme", theme);
@@ -160,33 +155,23 @@
         const button = document.getElementById("themeToggle");
 
         if (button) {
-            button.textContent =
-                theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+          button.textContent = theme === "dark" ? "☀" : "☾";
         }
+      }
 
-    }
-
-
-    function toggleTheme() {
-
+      function toggleTheme() {
         const currentTheme =
-            document.documentElement.getAttribute("data-theme");
+          document.documentElement.getAttribute("data-theme");
 
-        const newTheme =
-            currentTheme === "dark" ? "light" : "dark";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
 
         applyTheme(newTheme);
+      }
 
-    }
+      // INITIALIZE THEME
+      const initialTheme = localStorage.getItem("verifier-theme") || "light";
 
-
-    // INITIALIZE THEME
-    const initialTheme =
-        localStorage.getItem("verifier-theme") || "light";
-
-    applyTheme(initialTheme);
-
-</script>
-
-</body>
+      applyTheme(initialTheme);
+    </script>
+  </body>
 </html>
